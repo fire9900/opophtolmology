@@ -13,7 +13,7 @@ const HomePage = () => {
             <section className="home-section feature-section">
                 <h1>Мощный инструмент использующий передовые технологии нейронных сетей.</h1>
                 <h3>Меньше рутины, больше продуктивной работы.</h3>
-                <a href="#" className="learn-more">Узнать больше</a>
+                <a href="#dignities-section" className="learn-more">Узнать больше</a>
             </section>
             <section className="home-section feedback-section">
                 <h1>9 из 10 офтамологов рекомендуют наш продукт.</h1>
@@ -39,6 +39,30 @@ const HomePage = () => {
                         </div>
                         <p className="feedback-card__text">Всё стало быстрее и проще, так что у меня прибавилось времени на обед</p>
                     </div>
+                </div>
+            </section>
+            <section className="dignities-section" id="dignities-section">
+                <div className="dignities-card">
+                    <div className="dignities-card__content">
+                        <p className="dignities-card__title">Приложение способное работать на любом устройстве.</p>
+                        <p className="dignities-card__description">Наше приложение требует всего лишь камеру телефона
+                            для полной работы.</p>
+                    </div>
+                    <img className="dignities-card__img" src="/images/dignities/1.png"></img>
+                </div>
+                <div className="dignities-card">
+                    <div className="dignities-card__content">
+                        <p className="dignities-card__title">Интерактивное обучение.</p>
+                        <p className="dignities-card__description">Приложение адаптирует обучение под пользователя.</p>
+                    </div>
+                    <img className="dignities-card__img" src="/images/dignities/2.png"></img>
+                </div>
+                <div className="dignities-card">
+                    <div className="dignities-card__content">
+                        <p className="dignities-card__title">Передовая информация.</p>
+                        <p className="dignities-card__description">Приложение постоянно развивается и использует передовые медицинские знания.</p>
+                    </div>
+                    <img className="dignities-card__img" src="/images/dignities/3.png"></img>
                 </div>
             </section>
         </>

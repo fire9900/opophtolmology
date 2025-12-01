@@ -6,7 +6,7 @@ import '../assets/styles/pages/auth.scss'
 const RegisterPage = () => {
   const navigate = useNavigate()
   const [form, setForm] = useState({
-    login: '',
+    username: '',
     password: '',
     confirmPassword: '',
   })
@@ -31,10 +31,10 @@ const RegisterPage = () => {
 
     try {
       await register({
-        username: form.login,
+        username: form.username,
         password: form.password,
       })
-      navigate('/login')
+      navigate('/')
     } catch (err) {
       setError(err.message ?? 'Не удалось создать аккаунт')
     } finally {
@@ -54,9 +54,9 @@ const RegisterPage = () => {
             <input
               className="auth__input"
               type="text"
-              name="login"
+              name="username"
               required
-              value={form.login}
+              value={form.username}
               onChange={handleChange}
             />
           </label>

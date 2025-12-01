@@ -28,19 +28,19 @@ function notifyAuthChange() {
 
 function persistToken(token) {
   if (token) {
-    localStorage.setItem('accessToken', token)
+    localStorage.setItem('token', token)
   } else {
-    localStorage.removeItem('accessToken')
+    localStorage.removeItem('token')
   }
   notifyAuthChange()
 }
 
 export async function login({ username, password }) {
   const data = await request('/sign-in', { username, password })
-  if (!data?.accessToken) {
+  if (!data?.token) {
     throw new Error('Токен не получен от сервера')
   }
-  persistToken(data.accessToken)
+  persistToken(data.token)
   return data
 }
 
@@ -57,7 +57,7 @@ export function logout() {
 }
 
 export function getToken() {
-  return localStorage.getItem('accessToken')
+  return localStorage.getItem('token')
 }
 
 function decodePayload(token) {

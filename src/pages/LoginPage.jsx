@@ -41,7 +41,7 @@ const LoginPage = () => {
             <input
               className="auth__input"
               type="text"
-              name="login"
+              name="username"
               required
               placeholder="Введите логин"
               value={form.username}

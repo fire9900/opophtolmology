@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { uploadForPrediction } from '../services/predictService'
+import { useState, useEffect, useCallback } from 'react'
+import { uploadForPrediction, getPredictionAttempts } from '../services/predictService'
 import '../assets/styles/pages/analysis.scss'
 
 const AnalysisPage = () => {
@@ -8,12 +8,35 @@ const AnalysisPage = () => {
   const [resultMessage, setResultMessage] = useState('')
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [attempts, setAttempts] = useState(null)
+  const [attemptsError, setAttemptsError] = useState('')
+  const [isAttemptsLoading, setIsAttemptsLoading] = useState(true)
+
   const predictions = {
-    "cataract": "Катаракта",
-    "diabetic_retinopathy": "Диабетическая ретинопатия",
-    "glaucoma": "Глаукома",
-    "normal": "Отклонений не выявлено",
+    cataract: 'Катаракта',
+    diabetic_retinopathy: 'Диабетическая ретинопатия',
+    glaucoma: 'Глаукома',
+    normal: 'Отклонений не выявлено',
   }
+
+  const fetchAttempts = useCallback(async () => {
+    setAttemptsError('')
+    setIsAttemptsLoading(true)
+    try {
+      const data = await getPredictionAttempts()
+      const value = typeof data?.amount === 'number' ? data.amount : null
+      setAttempts(value)
+    } catch (err) {
+      setAttemptsError(err.message ?? 'Не удалось получить количество попыток')
+      setAttempts(null)
+    } finally {
+      setIsAttemptsLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchAttempts()
+  }, [fetchAttempts])
 
   const handleFileChange = (event) => {
     const selected = event.target.files?.[0]
@@ -49,8 +72,10 @@ const AnalysisPage = () => {
         throw new Error('Сервер не вернул prediction')
       }
 
-      const message = predictionMessages[prediction] ?? `Результат: ${predictions[prediction]}`
+      const label = predictions[prediction] ?? prediction
+      const message = `Результат: ${label}`
       setResultMessage(message)
+      await fetchAttempts()
     } catch (err) {
       setError(err.message ?? 'Ошибка отправки файла')
     } finally {
@@ -64,6 +89,18 @@ const AnalysisPage = () => {
         <div className="analysis__intro">
           <h1>Обработка изображения</h1>
           <p>Загрузите фото, чтобы получить предсказание модели.</p>
+        </div>
+
+        <div className="analysis__attempts">
+          {isAttemptsLoading && 'Загружаем количество попыток...'}
+          {!isAttemptsLoading && attempts !== null && (
+            <span>Осталось попыток: {attempts}</span>
+          )}
+          {!isAttemptsLoading && attempts === null && (
+            <span className="analysis__status analysis__status--error">
+              {attemptsError || 'Не удалось получить количество попыток'}
+            </span>
+          )}
         </div>
 
         <form className="analysis__form" onSubmit={handleSubmit}>
@@ -98,9 +135,3 @@ const AnalysisPage = () => {
 }
 
 export default AnalysisPage
-
-const predictionMessages = {
-  normal: 'Снимок в норме. Патологии не выявлены.',
-  anomaly: 'Обнаружены признаки патологии. Требуется консультация специалиста.',
-}
-

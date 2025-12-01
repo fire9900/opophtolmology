@@ -127,6 +127,7 @@
   padding: 120px 9.375vw;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: 32px;
   flex-wrap: wrap;
 
@@ -159,6 +160,97 @@
 
     &__img {
       width: 100%;
+    }
+  }
+}
+
+.pricing-section {
+  padding: 120px 9.375vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+
+  .pricing-card {
+    width: 340px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 32px 24px;
+
+    &__desc {
+      margin-bottom: 32px;
+    }
+
+    &__name {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    &__for {
+      font-size: 18px;
+      font-weight: 500;
+      color: #737373;
+    }
+
+    &__price {
+      margin-bottom: 32px;
+
+      h1 {
+        display: inline-block;
+
+        font-size: 36px;
+        font-weight: bold;
+      }
+
+      p {
+        display: inline-block;
+        color: #737373;
+      }
+    }
+
+    &__features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    &__feature {
+      position: relative;
+      padding-left: 32px;
+      
+      &::before {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1em;
+        height: 1em;
+        content: "";
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNCAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEgNkw1LjI0NTcxIDEwLjU0ODhDNS40NjI2MyAxMC43ODEyIDUuODM4NTMgMTAuNzU0OCA2LjAyMDg1IDEwLjQ5NDNMMTIuNjY2NyAxIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utb3BhY2l0eT0iMC41NSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+    }
+
+    &__btn {
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+      padding: 11px 14px;
+      font-size: 18px;
+      border: 2px solid #737373;
+      border-radius: 12px;
+      background-color: transparent;
+      transition: 0.3s;
+
+      &:hover {
+        border: 2px solid #000;
+        background-color: #000;
+        color: #fff;
+      }
     }
   }
 }

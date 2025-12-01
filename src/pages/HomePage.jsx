@@ -6,8 +6,8 @@ const HomePage = () => {
             <section className="try-section">
                 <p className="section-title">OpOphtolmology</p>
                 <div className="try-buttons">
-                    <a className="primary" href="">Попробовать бесплатно</a>
-                    <a href="">Другие предложения</a>
+                    <a className="primary" href="#pricing-section">Попробовать бесплатно</a>
+                    <a href="#pricing-section">Другие предложения</a>
                 </div>
             </section>
             <section className="home-section feature-section">
@@ -63,6 +63,56 @@ const HomePage = () => {
                         <p className="dignities-card__description">Приложение постоянно развивается и использует передовые медицинские знания.</p>
                     </div>
                     <img className="dignities-card__img" src="/images/dignities/3.png"></img>
+                </div>
+            </section>
+            <section className="pricing-section" id="pricing-section">
+                <div className="pricing-card">
+                    <div className="pricing-card__desc">
+                        <p className="pricing-card__name">Эконом</p>
+                        <p className="pricing-card__for">Для физических лиц</p>
+                    </div>
+                    <div className="pricing-card__price">
+                        <h1>10 000₽</h1>
+                        <p>/месяц</p>
+                    </div>
+                    <div className="pricing-card__features-list">
+                        <p className="pricing-card__feature">Особенность 1</p>
+                        <p className="pricing-card__feature">Особенность 2</p>
+                        <p className="pricing-card__feature">Особенность 3</p>
+                    </div>
+                    <button className="pricing-card__btn" type="button">Получить</button>
+                </div>
+                <div className="pricing-card">
+                    <div className="pricing-card__desc">
+                        <p className="pricing-card__name">Стандарт</p>
+                        <p className="pricing-card__for">Для средних организаций</p>
+                    </div>
+                    <div className="pricing-card__price">
+                        <h1>75 000₽</h1>
+                        <p>/месяц</p>
+                    </div>
+                    <div className="pricing-card__features-list">
+                        <p className="pricing-card__feature">Преимущества плана "Эконом"</p>
+                        <p className="pricing-card__feature">Особенность 2</p>
+                        <p className="pricing-card__feature">Особенность 3</p>
+                    </div>
+                    <button className="pricing-card__btn" type="button">Получить</button>
+                </div>
+                <div className="pricing-card">
+                    <div className="pricing-card__desc">
+                        <p className="pricing-card__name">Профессионал</p>
+                        <p className="pricing-card__for">Для крупных организаций</p>
+                    </div>
+                    <div className="pricing-card__price">
+                        <h1>130 000₽</h1>
+                        <p>/месяц</p>
+                    </div>
+                    <div className="pricing-card__features-list">
+                        <p className="pricing-card__feature">Преимущества плана "Стандарт"</p>
+                        <p className="pricing-card__feature">Особенность 2</p>
+                        <p className="pricing-card__feature">Особенность 3</p>
+                    </div>
+                    <button className="pricing-card__btn" type="button">Получить</button>
                 </div>
             </section>
         </>
